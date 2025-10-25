@@ -1,17 +1,20 @@
-import tkinter as tk
-# Create main window
-window = tk.Tk()
-window.title("Basic GUI Example")
-window.geometry("300x200")
-# Add widgets
-label = tk.Label(window, text="Hello, Tkinter!", font=("Arial", 14))
-label.pack(pady=10)
-entry = tk.Entry(window, width=20)
-entry.pack(pady=5)
-def on_button_click():
-   user_input = entry.get()
-   label.config(text=f"Welcome, {user_input}!")
-button = tk.Button(window, text="Submit", command=on_button_click)
-button.pack(pady=10)
-# Run the application
-window.mainloop()
+from tkinter import *
+from tkinter import ttk
+root = Tk()
+frm = ttk.Frame(root, padding=10)
+frm.grid()
+DISPLAY_NUMBER = 0
+def number_print(number):
+    global DISPLAY_NUMBER
+    print(number)
+    DISPLAY_NUMBER *= 10
+    DISPLAY_NUMBER += number
+ttk.Label(frm, text=f"{DISPLAY_NUMBER}").grid(column=0, row=0)
+ttk.Button(frm, text="1", command=lambda: number_print(1)).grid(column=1, row=0)
+ttk.Button(frm, text="2", command=lambda: number_print(2)).grid(column=1, row=1)
+ttk.Button(frm, text="3", command=lambda: number_print(3)).grid(column=1, row=2)
+ttk.Button(frm, text="4", command=lambda: number_print(4)).grid(column=2, row=0)
+ttk.Button(frm, text="5", command=lambda: number_print(5)).grid(column=2, row=1)
+ttk.Button(frm, text="6", command=lambda: number_print(6)).grid(column=2, row=2)
+
+root.mainloop()
