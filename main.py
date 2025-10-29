@@ -1,12 +1,6 @@
-from calculations import calculate
+from calculations import calculate, append_digit
 import tkinter as tk
 
-def append_digit(current_number, digit):
-    current = current_number.get()
-    if current == "0":
-        current_number.set(str(digit))
-    else:
-        current_number.set(current + str(digit))
 
 def main():
     root = tk.Tk()
@@ -40,8 +34,18 @@ def main():
         ).grid(row=row, column=col, padx=2, pady=2)
     
     function_buttons = [
-        ('',)
+        ('<x|', 1, 0), ('AC', 1, 1), ('-', 1, 2),
+        ('/', 2,   3), ('x', 3, 3 ), ('+', 4, 3),
+        
     ]
+    for (digit, row, col) in function_buttons:
+        tk.Button(
+            frm, 
+            text=digit,
+            width=5,
+            height=2,
+            command=lambda d=digit: append_digit(current_number, d)
+        ).grid(row=row, column=col, padx=2, pady=2)
 
     root.mainloop()
 
