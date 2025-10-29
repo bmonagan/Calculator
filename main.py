@@ -10,18 +10,23 @@ def main():
     frm = tk.Frame(root, padx=10, pady=10)
     frm.grid()
     
-    # Display variable and label
+    # Secondary and main display variables and labels
+    secondary_number = tk.StringVar()
+    secondary_label = tk.Label(frm, textvariable=secondary_number, font=('Arial', 12), anchor='e', width=12)
+    secondary_label.grid(column=0, row=0, columnspan=3, padx=5, sticky='ew')
+    secondary_number.set("")
+
     current_number = tk.StringVar()
     label = tk.Label(frm, textvariable=current_number, font=('Arial', 24), anchor='e', width=12)
-    label.grid(column=0, row=0, columnspan=3, padx=5, pady=10, sticky='ew')
+    label.grid(column=0, row=1, columnspan=3, padx=5, pady=10, sticky='ew')
     current_number.set("0")
     
     # Create number buttons in a grid (calculator layout)
     buttons = [
-        ('7', 2, 0), ('8', 2, 1), ('9', 2, 2),
-        ('4', 3, 0), ('5', 3, 1), ('6', 3, 2),
-        ('1', 4, 0), ('2', 4, 1), ('3', 4, 2),
-        ('0', 5, 1)
+        ('7', 3, 0), ('8', 3, 1), ('9', 3, 2),
+        ('4', 4, 0), ('5', 4, 1), ('6', 4, 2),
+        ('1', 5, 0), ('2', 5, 1), ('3', 5, 2),
+        ('0', 6, 1)
     ]
     
     for (digit, row, col) in buttons:
@@ -34,8 +39,8 @@ def main():
         ).grid(row=row, column=col, padx=2, pady=2)
     
     function_buttons = [
-        ('<x|', 1, 0), ('AC', 1, 1), ('-', 1, 2),
-        ('/', 2,   3), ('x', 3, 3 ), ('+', 4, 3),
+        ('<x|', 2, 0), ('AC', 2, 1), ('-', 2, 2),
+        ('/', 3,   3), ('x', 4, 3 ), ('+', 5, 3),
         
     ]
     for (digit, row, col) in function_buttons:
