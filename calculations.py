@@ -1,6 +1,7 @@
-# placeholder
+
 
 def calculate(equation):
+    # placeholder
     output = eval(equation)
     return str(output)
 
@@ -13,3 +14,15 @@ def append_digit(current_number, digit):
 
 def clear():
     pass
+def addition():
+    pass
+def subtraction():
+    pass
+def multiplication():
+    pass   
+def division():
+    pass
+def backspace():
+    pass
+def equals():
+    
