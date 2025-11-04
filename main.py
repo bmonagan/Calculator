@@ -21,6 +21,32 @@ def main():
     label.grid(column=0, row=1, columnspan=3, padx=5, pady=10, sticky='ew')
     current_number.set("0")
     
+    def format_display(value):
+        if value is None or value == "":
+            return "0"
+        s = str(value)
+        # normalize leading zeros (keep "0" if empty)
+        if s != "0":
+            s = s.lstrip("0") or "0"
+        # limit max length for UI (example)
+        return s[:12]
+
+    def update_display(current_var, secondary_var=None, current_value=None, secondary_value=None):
+        # Single place to set StringVars (side effects centralized)
+        if current_value is not None:
+            current_var.set(format_display(current_value))
+        if secondary_var is not None and secondary_value is not None:
+            secondary_var.set(format_display(secondary_value))
+    
+    def on_digit(d):
+        cur = current_number.get()
+        # Replace initial "0" otherwise append
+        if cur == "0":
+            new = d
+        else:
+            new = cur + d
+        update_display(current_number, current_value=new)
+
     # Create number buttons in a grid (calculator layout)
     buttons = [
         ('7', 3, 0), ('8', 3, 1), ('9', 3, 2),
@@ -34,7 +60,7 @@ def main():
             text=digit,
             width=5,
             height=2,
-            command=lambda d=digit: calculations.append_digit(current_number, d)
+            command=lambda d=digit: on_digit(d)
         ).grid(row=row, column=col, padx=2, pady=2)
     
     function_buttons = [
