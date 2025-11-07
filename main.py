@@ -68,11 +68,12 @@ def main():
         ('<x|', 2, 0, calculations.backspace, [current_number]), 
         ('AC', 2, 1, calculations.clear, [current_number, secondary_number]), 
         ('-', 2, 2, calculations.subtraction, [current_number, secondary_number]),
-        ('/', 3,   3, calculations.division, [current_number, secondary_number]), 
+        ('/', 3, 3, calculations.division, [current_number, secondary_number]), 
         ('x', 4, 3 , calculations.multiplication, [current_number, secondary_number]), 
         ('+', 5, 3, calculations.addition, [current_number, secondary_number]),
-        ('=', 6, 3, calculations.equals, [current_number, secondary_number]), 
-        ('.', 6, 0, calculations.decimal_point, [current_number]),
+        ('+/-', 6,0, calculations.negation, current_number),
+        ('.', 6, 2, calculations.decimal_point, [current_number]),
+        ('=', 6, 3, calculations.equals, [current_number, secondary_number]),
         
     ]
     for (digit, row, col, func_ref, args) in function_buttons:
