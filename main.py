@@ -11,16 +11,16 @@ def main():
     frm.grid()
     
     # Secondary and main display variables and labels
+    current_number = tk.StringVar()
+    label = tk.Label(frm, textvariable=current_number, font=('Arial', 24), anchor='e', width=12)
+    label.grid(column=0, row=1, columnspan=3, padx=5, pady=10, sticky='ew')
+    current_number.set("0") 
+
     secondary_number = tk.StringVar()
     secondary_label = tk.Label(frm, textvariable=secondary_number, font=('Arial', 12), anchor='e', width=12)
     secondary_label.grid(column=0, row=0, columnspan=3, padx=5, sticky='ew')
     secondary_number.set("")
 
-    current_number = tk.StringVar()
-    label = tk.Label(frm, textvariable=current_number, font=('Arial', 24), anchor='e', width=12)
-    label.grid(column=0, row=1, columnspan=3, padx=5, pady=10, sticky='ew')
-    current_number.set("0")
-    
     def format_display(value):
         if value is None or value == "":
             return "0"
@@ -64,8 +64,8 @@ def main():
         ).grid(row=row, column=col, padx=2, pady=2)
     
     function_buttons = [
-        ('<x|', 2, 0, calculations.backspace), ('AC', 2, 1, calculations.clear), ('-', 2, 2, calculations.subtraction),
-        ('/', 3,   3, calculations.division), ('x', 4, 3 , calculations.multiplication), ('+', 5, 3, calculations.addition),
+        ('<x|', 2, 0, calculations.backspace(current_number)), ('AC', 2, 1, calculations.clear(current_number,secondary_number)), ('-', 2, 2, calculations.subtraction(current_number,secondary_number)),
+        ('/', 3,   3, calculations.division(current_number,secondary_number)), ('x', 4, 3 , calculations.multiplication(current_number,secondary_number)), ('+', 5, 3, calculations.addition(current_number,secondary_number)),
         
     ]
     for (digit, row, col,function) in function_buttons:
