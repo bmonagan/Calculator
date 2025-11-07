@@ -68,13 +68,14 @@ def main():
         ('/', 3,   3, calculations.division(current_number,secondary_number)), ('x', 4, 3 , calculations.multiplication(current_number,secondary_number)), ('+', 5, 3, calculations.addition(current_number,secondary_number)),
         
     ]
-    for (digit, row, col,function) in function_buttons:
+    for (digit, row, col, func_ref, args) in function_buttons:
         tk.Button(
             frm, 
             text=digit,
             width=5,
             height=2,
-            command=function
+            # Use lambda to call the function reference with its arguments
+            command=lambda f=func_ref, a=args: f(*a)
         ).grid(row=row, column=col, padx=2, pady=2)
 
     root.mainloop()
