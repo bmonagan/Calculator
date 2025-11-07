@@ -64,13 +64,20 @@ def main():
         ).grid(row=row, column=col, padx=2, pady=2)
     
     function_buttons = [
-        ('<x|', 2, 0, calculations.backspace(current_number)), ('AC', 2, 1, calculations.clear(current_number,secondary_number)), ('-', 2, 2, calculations.subtraction(current_number,secondary_number)),
-        ('/', 3,   3, calculations.division(current_number,secondary_number)), ('x', 4, 3 , calculations.multiplication(current_number,secondary_number)), ('+', 5, 3, calculations.addition(current_number,secondary_number)),
+        # (digit, row, col, function_reference, [args])
+        ('<x|', 2, 0, calculations.backspace, [current_number]), 
+        ('AC', 2, 1, calculations.clear, [current_number, secondary_number]), 
+        ('-', 2, 2, calculations.subtraction, [current_number, secondary_number]),
+        ('/', 3,   3, calculations.division, [current_number, secondary_number]), 
+        ('x', 4, 3 , calculations.multiplication, [current_number, secondary_number]), 
+        ('+', 5, 3, calculations.addition, [current_number, secondary_number]),
+        ('=', 6, 3, calculations.equals, [current_number, secondary_number]), 
+        ('.', 6, 0, calculations.decimal_point, [current_number]),
         
     ]
     for (digit, row, col, func_ref, args) in function_buttons:
         tk.Button(
-            frm, 
+            frm,
             text=digit,
             width=5,
             height=2,
