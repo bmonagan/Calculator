@@ -47,6 +47,14 @@ def main():
             new = cur + d
         update_display(current_number, current_value=new)
 
+    # helper to call function refs with flexible args (None, single, or list/tuple)
+    def call_function(func, args):
+        if args is None:
+            return func()
+        if isinstance(args, (list, tuple)):
+            return func(*args)
+        return func(args)
+
     # Create number buttons in a grid (calculator layout)
     digit_buttons = [
         ('7', 4, 0), ('8', 4, 1), ('9', 4, 2),
@@ -95,8 +103,8 @@ def main():
             text=digit,
             width=5,
             height=2,
-            # Use lambda to call the function reference with its arguments
-            command=lambda f=func_ref, a=args: f(*a)
+            # Use dispatcher to handle None, single arg, or list/tuple args
+            command=lambda f=func_ref, a=args: call_function(f, a)
         ).grid(row=row, column=col, padx=2, pady=2)
 
     root.mainloop()
