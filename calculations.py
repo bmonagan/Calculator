@@ -16,6 +16,9 @@ def clear(current_number, secondary_number):
     secondary_number.set("0")
 def addition(current_number, secondary_number):
     pass
+
+
+    
 def subtraction(current_number, secondary_number):
     pass
 def multiplication(current_number, secondary_number):
@@ -38,8 +41,12 @@ def decimal_point(current_number):
 
 def negation(current_number):
     current = current_number.get()
-    if current > 0:
-        current_number.set(current * -1)
+    if current > "0":
+        current_number.set("-" + current)
+    elif current == "0":
+        pass
+    else:
+        current_number.set(current[1:])
 
 def placeholder():
     pass
