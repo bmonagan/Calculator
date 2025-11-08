@@ -35,3 +35,11 @@ def decimal_point(current_number):
     current = current_number.get()
     if '.' not in current:
         current_number.set(current + '.')
+
+def negation(current_number):
+    current = current_number.get()
+    if current > 0:
+        current_number.set(current * -1)
+
+def placeholder():
+    pass
