@@ -1,5 +1,3 @@
-
-
 def calculate(equation):
     # placeholder
     output = eval(equation)
@@ -13,7 +11,9 @@ def append_digit(current_number, digit):
         current_number.set(current + str(digit))
 
 def clear(current_number, secondary_number):
-    pass
+    current_number.set("0")
+    # might need to be changed. Will see after full functionality.
+    secondary_number.set("0")
 def addition(current_number, secondary_number):
     pass
 def subtraction(current_number, secondary_number):
