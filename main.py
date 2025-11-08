@@ -65,12 +65,25 @@ def main():
     
     function_buttons = [
         # (digit, row, col, function_reference, [args])
-        ('⌫',2, 3, calculations.backspace, [current_number]), 
-        ('AC', 2, 1, calculations.clear, [current_number, secondary_number]), 
-        ('-', 4, 3, calculations.subtraction, [current_number, secondary_number]),
-        ('/', 4, 1, calculations.division, [current_number, secondary_number]), 
-        ('x', 4, 2 , calculations.multiplication, [current_number, secondary_number]), 
-        ('+', 5, 3, calculations.addition, [current_number, secondary_number]),
+        ('...', 2, 0, calculations.placeholder, None),
+        ('C', 2, 1, calculations.clear, [current_number, secondary_number]),
+        ('...', 2, 2, calculations.placeholder, None),
+        ('⌫', 2, 3, calculations.backspace, [current_number]),
+
+        ('...', 3, 0, calculations.placeholder, None),
+        ('...', 3, 1, calculations.placeholder, None),
+        ('...', 3, 2, calculations.placeholder, None),
+        ('/', 3, 3, calculations.division, [current_number, secondary_number]),
+
+        # Digit buttons make up the interior of the row
+        ('x', 4, 3 , calculations.multiplication, [current_number, secondary_number]), 
+
+        # Digit buttons make up the interior of the row
+        ('-', 5, 3, calculations.subtraction, [current_number, secondary_number]),
+        
+        # Digit buttons make up the interior of the row
+        ('+', 6, 3, calculations.addition, [current_number, secondary_number]),
+        
         ('+/-', 7,0, calculations.negation, current_number),
         ('.', 7, 2, calculations.decimal_point, [current_number]),
         ('=', 7, 3, calculations.equals, [current_number, secondary_number]),
