@@ -1,5 +1,6 @@
 def calculate(equation):
-    # placeholder
+    #TODO get rid of eval and handle the string calculations correctly.
+    # stack and work through operators.
     output = eval(equation)
     return str(output)
 
@@ -54,4 +55,5 @@ def negation(current_number):
         current_number.set(current[1:])
 
 def placeholder():
+    # TODO add exponenet. Parenthesis etc.
     pass
