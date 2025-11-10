@@ -18,16 +18,15 @@ def addition(current_number, secondary_number):
     current = current_number.get()
     secondary_number.set(current + "+")
     
-
-
-    
 def subtraction(current_number, secondary_number):
     current = current_number.get()
     secondary_number.set(current + "-")
 def multiplication(current_number, secondary_number):
-    pass   
+    current = current_number.get()
+    secondary_number.set(current + "*")   
 def division(current_number, secondary_number):
-    pass
+    current = current_number.get()
+    secondary_number.set(current + "/")   
 def backspace(current_number):
     current = current_number.get()
     if len(current) > 1:
