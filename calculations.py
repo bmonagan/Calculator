@@ -16,14 +16,14 @@ def clear(current_number, secondary_number):
     secondary_number.set("0")
 def addition(current_number, secondary_number):
     current = current_number.get()
-    
     secondary_number.set(current + "+")
     
 
 
     
 def subtraction(current_number, secondary_number):
-    pass
+    current = current_number.get()
+    secondary_number.set(current + "-")
 def multiplication(current_number, secondary_number):
     pass   
 def division(current_number, secondary_number):
@@ -35,7 +35,10 @@ def backspace(current_number):
     else:
         current_number.set("0")
 def equals(current_number, secondary_number):
-    pass
+    current = current_number.get()
+    secondary = secondary_number.get()
+    result = eval(secondary+current)
+    current_number.set(result)
 
 def decimal_point(current_number):
     current = current_number.get()
