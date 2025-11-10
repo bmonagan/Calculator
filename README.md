@@ -1,0 +1,1 @@
+![What the calculator currently looks like.](image.png)
