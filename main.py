@@ -32,6 +32,11 @@ def main():
     foreground='black',
     background='#E0E0E0' # Light Gray
     )
+    style.configure('Op.TButton',
+    font=('Helvetica', 14, 'bold'),
+    foreground='black',
+    background='#FFA500' # Bright Orange
+)
 
     def format_display(value):
         if value is None or value == "":
@@ -116,7 +121,7 @@ def main():
             width=5,
             # Use dispatcher to handle None, single arg, or list/tuple args
             command=lambda f=func_ref, a=args: call_function(f, a),
-            style='Num.TButton'
+            style='Op.TButton'
         ).grid(row=row, column=col, padx=2, pady=2)
     root.mainloop()
 
