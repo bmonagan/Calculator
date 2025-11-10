@@ -25,6 +25,13 @@ def main():
         width=12)
     secondary_label.grid(column=0, row=0, columnspan=4, padx=5, sticky='ew')
     secondary_number.set("")
+    # Style formatting 
+    style = ttk.Style()
+    style.configure('Num.TButton',
+    font=('Helvetica', 14, 'bold'),
+    foreground='black',
+    background='#E0E0E0' # Light Gray
+    )
 
     def format_display(value):
         if value is None or value == "":
@@ -68,12 +75,12 @@ def main():
         ('0', 7, 1)
     ]
     for (digit, row, col) in digit_buttons:
-        tk.Button(
+        ttk.Button(
             frm,
             text=digit,
             width=5,
-            height=2,
-            command=lambda d=digit: on_digit(d)
+            command=lambda d=digit: on_digit(d),
+            style='Num.TButton'
         ).grid(row=row, column=col, padx=2, pady=2)
 
     function_buttons = [
@@ -103,15 +110,14 @@ def main():
 
     ]
     for (digit, row, col, func_ref, args) in function_buttons:
-        tk.Button(
+        ttk.Button(
             frm,
             text=digit,
             width=5,
-            height=2,
             # Use dispatcher to handle None, single arg, or list/tuple args
-            command=lambda f=func_ref, a=args: call_function(f, a)
+            command=lambda f=func_ref, a=args: call_function(f, a),
+            style='Num.TButton'
         ).grid(row=row, column=col, padx=2, pady=2)
-
     root.mainloop()
 
 if __name__ == "__main__":
