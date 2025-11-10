@@ -15,7 +15,10 @@ def clear(current_number, secondary_number):
     # might need to be changed. Will see after full functionality.
     secondary_number.set("0")
 def addition(current_number, secondary_number):
-    pass
+    current = current_number.get()
+    
+    secondary_number.set(current + "+")
+    
 
 
     
